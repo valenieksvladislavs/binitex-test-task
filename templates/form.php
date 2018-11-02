@@ -54,44 +54,5 @@
     </div>
 </div>
 <script>
-    function validate_field(that)
-    {
-        var field = that.closest('.col-sm-6').find('.validate');
-        var data = field.val();
-        var field_name = field.attr("name");
-        var help_block = that.closest('.col-sm-6').find('.help-block');
-        var input = that.closest('.form-group');
-        var result = true;
-        $.ajaxSetup({
-            async: false
-        });
-        $.getJSON('/?action=validate_field', {data: data, field: field_name}, function(json){
-            if(json.error){
-                result = false;
-                help_block.html(json.error);
-                input.addClass('has-error');
-            }
-            else{
-                input.removeClass('has-error');
-                input.addClass('has-success');
-                help_block.empty();
-            }
-        });
-        $.ajaxSetup({
-            async: true
-        });
-        return result;
-    }
 
-    $(document).on("blur", ".validate", function () {
-        validate_field($(this));
-    });
-
-    $(document).on("submit", ".form-validate", function () {
-        var res = true;
-        $('.validate').each(function() {
-            if(validate_field($(this)) === false) res = false;
-        });
-        return res;
-    });
 </script>
