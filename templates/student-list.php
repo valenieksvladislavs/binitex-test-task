@@ -56,7 +56,7 @@
         <input type="hidden" name="inumber" id="inumber" value=""/>
         <input type="hidden" name="lname" id="lname" value=""/>
         <input type="hidden" name="year" id="year" value=""/>
-        <input type="hidden" name="univer" id="univer" value=""/>
+        <input type="hidden" name="city" id="city" value=""/>
         <input type="hidden" name="sort" id="sort" value=""/>
         <input type="hidden" name="page" id="page" value=""/>
     </form>
@@ -125,14 +125,14 @@
             var inumber = $('#insurance_number').val();
             var surname = $('#surname').val();
             var year = $('#year_of_birth').val();
-            var university = $('#unversity').val();
+            var city = $('#city_of_birth').val();
             var sort = $('#sort').val();
             var page = $('#page').val();
             $('#inumber').val(inumber);
             $('#lname').val(surname);
             $('#year').val(year);
-            $('#univer').val(university);
-            $.get('/?action=table', {insurance_number: inumber, surname: surname, year_of_birth: year, university: university, sort: sort, page: page}, function (response) {
+            $('#city').val(city);
+            $.get('/?action=table', {insurance_number: inumber, surname: surname, year_of_birth: year, city_of_birth: city, sort: sort, page: page}, function (response) {
                 $('#student-list').html(response);
             });
             e.preventDefault();
@@ -144,11 +144,11 @@
             var inumber = $('#inumber').val();
             var surname = $('#lname').val();
             var year = $('#year').val();
-            var university = $('#unver').val();
+            var city = $('#city').val();
             var sort = $('#sort').val();
             var page = $(this).attr('page');
             $('#page').val(page);
-            $.get('/?action=table', {insurance_number: inumber, surname: surname, year_of_birth: year, university: university, sort: sort, page: page}, function (response) {
+            $.get('/?action=table', {insurance_number: inumber, surname: surname, year_of_birth: year, city_of_birth: city, sort: sort, page: page}, function (response) {
                 $('#student-list').html(response);
             });
             e.preventDefault();
@@ -160,11 +160,11 @@
             var inumber = $('#inumber').val();
             var surname = $('#lname').val();
             var year = $('#year').val();
-            var university = $('#unver').val();
+            var city = $('#city').val();
             var sort = $(this).attr('sort');
             var page = $('#page').val();
             $('#sort').val(sort);
-            $.get('/?action=table', {insurance_number: inumber, surname: surname, year_of_birth: year, university: university, sort: sort, page: page}, function (response) {
+            $.get('/?action=table', {insurance_number: inumber, surname: surname, year_of_birth: year, city_of_birth: city, sort: sort, page: page}, function (response) {
                 $('#student-list').html(response);
             });
             e.preventDefault();
@@ -176,7 +176,7 @@
             $('#inumber').val('');
             $('#lname').val('');
             $('#year').val('');
-            $('#univer').val('');
+            $('#city').val('');
             $('#sort').val('');
             $('#page').val('');
             $.get('/?action=table', function (response) {
